@@ -1,4 +1,5 @@
-﻿@model BuffetFelipe.ViewModels.Home.IndexViewModel
+﻿@using System.Collections.Specialized
+@model BuffetFelipe.ViewModels.Home.IndexViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,6 +10,22 @@
 @Model.Titulo
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Bem vindo!</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<partial name="_DadosUsuarios"></partial>
+
+
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/home-index.css"/>
+}
+
+@section Scripts{
+    <script src="~/js/home-index.js" asp-append-version="true"></script>
+}
+
+@section InformacaoDeRodape{
+    <p>Página de boas vindas</p>    
+}

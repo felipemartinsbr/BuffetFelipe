@@ -39,3 +39,4 @@ C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\ref\Buff
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\BuffetFelipe.pdb
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\BuffetFelipe.genruntimeconfig.cache
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\BuffetFelipe.csproj.CopyComplete
+C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\Razor\Views\Shared\_DadosUsuarios.cshtml.g.cs
