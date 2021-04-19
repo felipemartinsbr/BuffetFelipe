@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
+using BuffetFelipe.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BuffetFelipe.Models;
@@ -16,14 +18,37 @@ namespace BuffetFelipe.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly DataBaseContext _dataBaseContext;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(
+            ILogger<HomeController> logger,
+            DataBaseContext dataBaseContext
+            )
         {
             _logger = logger;
+            _dataBaseContext = dataBaseContext;
         }
 
         public IActionResult Index()
         {
+            var novoCliente = new ClienteEntity
+            {
+                Nome = "Jose" ,
+                DataDeNascimento =  new DateTime(),
+                Idade = 40
+            };
+            _dataBaseContext.Clientes.Add(novoCliente);
+            _dataBaseContext.SaveChanges();
+            
+            var todosClientes =_dataBaseContext.Clientes.ToList();
+
+            foreach (ClienteEntity cliente in todosClientes)
+            {
+                Console.WriteLine(cliente.Nome);
+            }
+            
+            
+            
             // 1ª forma de enviar dados para a view
             ViewBag.InformacaoQualquer = "Informação qualquer";
             

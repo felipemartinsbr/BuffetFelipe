@@ -44,3 +44,13 @@ C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\Razor\Vi
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\Razor\Views\Home\StatusConvidado.cshtml.g.cs
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\Razor\Views\Home\StatusEvento.cshtml.g.cs
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\Razor\Views\Shared\_TabelaDeStatus.cshtml.g.cs
+C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\bin\Debug\net5.0\Microsoft.Bcl.HashCode.dll
+C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\bin\Debug\net5.0\MySqlConnector.dll
+C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\bin\Debug\net5.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\bin\Debug\net5.0\Pomelo.JsonObject.dll
+C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
