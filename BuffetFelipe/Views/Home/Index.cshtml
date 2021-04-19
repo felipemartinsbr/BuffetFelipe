@@ -1,6 +1,12 @@
-﻿@{
+﻿@model BuffetFelipe.ViewModels.Home.IndexViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
+
+@ViewBag.InformacaoQualquer
+@ViewData["informacao"]
+@Model.InformacaoQualquer
+@Model.Titulo
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
