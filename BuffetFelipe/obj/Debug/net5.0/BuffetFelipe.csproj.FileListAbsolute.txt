@@ -23,7 +23,6 @@ C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\scopedcs
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\BuffetFelipe.TagHelpers.input.cache
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\BuffetFelipe.TagHelpers.output.cache
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\BuffetFelipe.RazorCoreGenerate.cache
-C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\Razor\Views\Home\Clientes.cshtml.g.cs
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\BuffetFelipe\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs

@@ -18,37 +18,20 @@ namespace BuffetFelipe.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly DataBaseContext _dataBaseContext;
+        private readonly ClienteService _clienteService;
 
         public HomeController(
             ILogger<HomeController> logger,
-            DataBaseContext dataBaseContext
+            ClienteService clienteService
+            
             )
         {
             _logger = logger;
-            _dataBaseContext = dataBaseContext;
+            _clienteService = clienteService;
         }
 
         public IActionResult Index()
         {
-            var novoCliente = new ClienteEntity
-            {
-                Nome = "Jose" ,
-                DataDeNascimento =  new DateTime(),
-                Idade = 40
-            };
-            _dataBaseContext.Clientes.Add(novoCliente);
-            _dataBaseContext.SaveChanges();
-            
-            var todosClientes =_dataBaseContext.Clientes.ToList();
-
-            foreach (ClienteEntity cliente in todosClientes)
-            {
-                Console.WriteLine(cliente.Nome);
-            }
-            
-            
-            
             // 1ª forma de enviar dados para a view
             ViewBag.InformacaoQualquer = "Informação qualquer";
             
@@ -65,6 +48,18 @@ namespace BuffetFelipe.Controllers
                 Nome = "Felipe",
                 Idade = 31
             };
+            
+            // Trazer lista de clientes do banco de dados
+            var clientesDoBanco = _clienteService.obterClientes();
+            foreach (var clienteEntity in clientesDoBanco) {
+                viewmodel.Clientes.Add(new Cliente()
+                            {
+                                Id = clienteEntity.Id.ToString() ,
+                                Nome = clienteEntity.Nome
+                            });
+            }
+            
+            
             return View(viewmodel);
         }
 
@@ -72,28 +67,7 @@ namespace BuffetFelipe.Controllers
         {
             return View();
         }
-        
-        public IActionResult Clientes()
-        {
-            // Trazer lista de entidade clientes dos erviço de clientes (model)
-            var clienteService = new ClienteService();
-            var listaDeClientes = clienteService.obterClientes();
-
-            //  Criar e popular a viewModel
-            var viewModel = new ClientesViewModel();
-            foreach (ClienteEntity clienteEntity in listaDeClientes) {
-                viewModel.Clientes.Add( new Cliente
-                {
-                    Nome = clienteEntity.Nome,
-                    DataDeNascimento = clienteEntity.DataDeNascimento.ToShortDateString(),
-                    Idade = clienteEntity.Idade
-                });
-            }
-            
-             
-            return View(viewModel);
-        }
-
+       
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -13,4 +13,12 @@
       <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.4" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="ViewModels\Home\ClientesViewModel.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Views\Home\Clientes.cshtml" />
+    </ItemGroup>
+
 </Project>

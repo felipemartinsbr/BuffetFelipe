@@ -16,7 +16,12 @@
 
 <partial name="_DadosUsuarios" for="@Model.UsuarioLogado"></partial>
 
-
+<ul>
+    @foreach (var cliente in @Model.Clientes)
+    {
+        <li>O cliente @cliente.Nome possui o ID: @cliente.Id</li>
+    }
+</ul>
 
 @section Styles{
     <link rel="stylesheet" href="~/css/home-index.css"/>
