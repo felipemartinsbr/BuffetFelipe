@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/layout-externo.css"/>
+    @RenderSection("Styles", required:false)
+</head>
+<body>
+
+<nav class="navbar sticky-top flex-md-nowrap p-0">
+    <div>
+        <a href="/">Buffet Magister</a> 
+    </div>
+    <div class="text-right small">
+        <a asp-controller="InformacoesLegais" asp-action="TermosDeUso">Termos de Uso</a>
+        -
+        <a asp-controller="InformacoesLegais" asp-action="PoliticaDePrivacidade">Políticas de Privacidade</a>
+    </div>
+</nav>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2021 - Buffet Magister
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/layout-externo.js" asp-append-version="true"></script>
+@RenderSection("Scripts", required: false)
+</body>
+</html>

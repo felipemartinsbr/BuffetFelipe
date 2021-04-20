@@ -15,10 +15,21 @@
 
     <ItemGroup>
       <Compile Remove="ViewModels\Home\ClientesViewModel.cs" />
+      <Compile Remove="Models\Buffet\StatusConvidado.cs" />
+      <Compile Remove="Models\Buffet\StatusEvento.cs" />
+      <Compile Remove="Models\ErrorViewModel.cs" />
+      <Compile Remove="Controllers\HomeController.cs" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Remove="Views\Home\Clientes.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Admin\Supervisao.cshtml" />
+      <_ContentIncludedByDefault Remove="Admin\_ViewStart.cshtml" />
+      <_ContentIncludedByDefault Remove="InformacoesLegais\PoliticaDePrivacidade.cshtml" />
+      <_ContentIncludedByDefault Remove="InformacoesLegais\TermosDeUso.cshtml" />
     </ItemGroup>
 
 </Project>

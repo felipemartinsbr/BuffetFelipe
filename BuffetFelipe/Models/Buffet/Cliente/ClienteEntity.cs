@@ -1,17 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using BuffetFelipe.Models.Buffet.Evento;
 
 namespace BuffetFelipe.Models.Buffet.Cliente
 {
     public class ClienteEntity
     {
-        [Key] public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Nome { get; set; }
-        public DateTime DataDeNascimento { get; set; }
-        public int Idade { get; set; }
-        
-        
-        public string Sobrenome { get; set; }
-    }
+        public string Email { get; set; }
+
+        public ICollection<EventoEntity> Eventos { get; set; }
+
+
+        public ClienteEntity()
+        {
+            Id = new Guid();
+            Eventos = new List<EventoEntity>();
+        }
 }
