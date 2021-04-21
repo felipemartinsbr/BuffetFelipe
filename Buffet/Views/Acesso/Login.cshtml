@@ -1,13 +1,57 @@
-﻿@{
+﻿@model Buffet.ViewModels.Acesso.LoginViewModel
+
+@{
     ViewData["Title"] = "Login";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Login</h1>
+<div class="row">
+    <div class="col">
+        <h1 class="display-4 text-center">Login</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6 offset-3">
+        
+         @if (Model.MensagemLogin != null)
+                {
+                    <p>@Model.MensagemLogin</p>
+                }
+                
+                @if (Model.ErrosLogin != null)
+                        {
+                            <ul>
+                            @foreach (var erro in Model.ErrosLogin)
+                            {
+                                <li>@erro</li>
+                            }
+                            </ul>
+                        }
+
+        <form method="post" action="/Acesso/Login">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" id="email" name="email" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" name="Entrar" class="btn btn-primary">
+            </div>
+
+        </form>
+
+        <div class="text-center">
+            <a asp-controller="Admin" asp-action="Supervisao">Logar</a>
+            <br>
+            <a asp-controller="Acesso" asp-action="RecuperarConta">Recuperar Conta</a>
+            <br>
+            <a asp-controller="Acesso" asp-action="Cadastrar">Cadastrar</a>
+        </div>
+    </div>
     
-    <a asp-controller="Admin" asp-action="Supervisao">Logar</a>
-    <br>
-    <a asp-controller="Acesso" asp-action="RecuperarConta">Recuperar Conta</a>
-    <br>
-    <a asp-controller="Acesso" asp-action="Cadastrar">Cadastrar</a>
 </div>

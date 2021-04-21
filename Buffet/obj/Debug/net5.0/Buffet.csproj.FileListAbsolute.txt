@@ -112,3 +112,4 @@ C:\Users\fmsbr\RiderProjects\BuffetFelipe\Buffet\obj\Debug\net5.0\Buffet.dll
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\Buffet\obj\Debug\net5.0\ref\Buffet.dll
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\Buffet\obj\Debug\net5.0\Buffet.pdb
 C:\Users\fmsbr\RiderProjects\BuffetFelipe\Buffet\obj\Debug\net5.0\Buffet.genruntimeconfig.cache
+C:\Users\fmsbr\RiderProjects\BuffetFelipe\Buffet\obj\Debug\net5.0\Razor\Views\Admin\_ViewImports.cshtml.g.cs

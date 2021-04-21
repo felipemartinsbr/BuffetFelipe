@@ -13,14 +13,14 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 1 "C:\Users\fmsbr\RiderProjects\BuffetFelipe\Buffet\Views\_ViewImports.cshtml"
+#line 1 "C:\Users\fmsbr\RiderProjects\BuffetFelipe\Buffet\Views\Admin\_ViewImports.cshtml"
 using Buffet;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\fmsbr\RiderProjects\BuffetFelipe\Buffet\Views\_ViewImports.cshtml"
+#line 2 "C:\Users\fmsbr\RiderProjects\BuffetFelipe\Buffet\Views\Admin\_ViewImports.cshtml"
 using Buffet.Models;
 
 #line default
@@ -28,6 +28,7 @@ using Buffet.Models;
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"38612e54a7a638f554cf05592e229916929b5b9e", @"/Views/Admin/_ViewStart.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"dd870f781a0f9d6549a10afadf256dfaa14605a3", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"dd870f781a0f9d6549a10afadf256dfaa14605a3", @"/Views/Admin/_ViewImports.cshtml")]
     public class Views_Admin__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
