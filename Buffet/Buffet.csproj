@@ -16,6 +16,19 @@
 
     <ItemGroup>
       <Content Remove="Views\Acesso\Supervisao.cshtml" />
+      <Content Remove="Models\Buffet\Tipo\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Models\Buffet\Tipo\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Models\Buffet\Tipo\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Models\Buffet\Tipo\**" />
     </ItemGroup>
 
 </Project>

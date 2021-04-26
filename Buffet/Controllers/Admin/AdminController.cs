@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Buffet.Controllers.Admin
 {
     [Authorize]
-    public class AdminController : Controller
+    public  class AdminController : Controller
     {
         public AdminController()
         {

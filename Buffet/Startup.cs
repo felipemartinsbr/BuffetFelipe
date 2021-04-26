@@ -77,6 +77,11 @@ namespace Buffet
                     name: "default",
                     pattern: "{controller=Acesso}/{action=Login}/{param?}"
                 );
+                
+                endpoints.MapControllerRoute(
+                    name: "admin",
+                    pattern: "Admin/{controller=Supervisao}/{action=Index}/{param?}"
+                );
             });
         }
     }
