@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Buffet.Data;
 using Buffet.Models.Acesso;
 using Buffet.Models.Buffet.Cliente;
+using Buffet.Models.Buffet.Convidado;
+using Buffet.Models.Buffet.Evento;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,7 +40,10 @@ namespace Buffet
             services.AddIdentity<Usuario, Papel>(options =>
             {
                 options.User.RequireUniqueEmail = true;
-                options.Password.RequiredLength = 8;
+                options.Password.RequiredLength = 3;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
             }).AddEntityFrameworkStores<DatabaseContext>();
 
             services.ConfigureApplicationCookie(options =>
@@ -48,7 +53,9 @@ namespace Buffet
             
             services.AddTransient<AcessoService>();
             services.AddTransient<ClienteService>();
-            
+            services.AddTransient<EventoService>();
+            services.AddTransient<ConvidadoService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

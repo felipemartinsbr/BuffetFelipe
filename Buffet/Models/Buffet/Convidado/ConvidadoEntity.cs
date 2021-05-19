@@ -5,6 +5,7 @@ namespace Buffet.Models.Buffet.Convidado
 {
     public class ConvidadoEntity
     {
+        public Guid Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Cpf { get; set; }
@@ -15,5 +16,13 @@ namespace Buffet.Models.Buffet.Convidado
         public DateTime DataConvidadoInserido { get; set; }
         public DateTime DataConvidadoModificado { get; set; }
         
+        
+        public ConvidadoEntity()
+        {
+                Id = new Guid();
+                
+        }
+    
+    
     }
 }

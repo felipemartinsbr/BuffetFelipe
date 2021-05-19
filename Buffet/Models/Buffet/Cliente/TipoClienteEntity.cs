@@ -6,9 +6,12 @@ namespace Buffet.Models.Buffet.Tipo
     {
         public Guid Id { get; set; }
         public string Descricao { get; set; }
-        public Boolean PessoaFisica { get; set; }
-        public Boolean PessoaJuridica { get; set; }
         
+        public TipoClienteEntity()
+        {
+            Id = new Guid();
+        }
         
     }
+
 }

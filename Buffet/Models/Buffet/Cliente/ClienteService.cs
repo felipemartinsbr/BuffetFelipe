@@ -10,10 +10,8 @@ namespace Buffet.Models.Buffet.Cliente
     {
         private readonly DatabaseContext _databaseContext;
 
-        public ClienteService(
-            DatabaseContext databaseContext
-        )
-        {
+        public ClienteService(DatabaseContext databaseContext)
+        { 
             _databaseContext = databaseContext;
         }
  

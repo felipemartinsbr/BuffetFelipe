@@ -6,5 +6,10 @@ namespace Buffet.Models.Buffet.Tipo
     {
         public Guid Id { get; set; }
         public string Descricao { get; set; }
+
+        public TipoEventoEntity()
+        {
+            Id = new Guid();
+        }
     }
 }

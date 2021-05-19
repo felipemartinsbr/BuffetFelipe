@@ -1,4 +1,7 @@
 ﻿@using System.Collections.Specialized
+@using Buffet.ViewModels.PainelDoUsuario
+@using Microsoft.EntityFrameworkCore.Scaffolding.Metadata
+@model Buffet.ViewModels.PainelDoUsuario.IndexViewModel
 @{
     ViewData["Title"] = "Painel do Usuário";
 }
@@ -16,5 +19,23 @@
 }
 
 <div class="text-center">
-    <p>asd</p>
+    <h1>Detalhes da Conta</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID:</th>
+            <th>Email:</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        
+        <tr>
+            <td>@Model.DadosUsuario.Id</td>
+            <td>Teste</td>
+        </tr>
+        
+        </tbody>
+    </table>
+    
 </div>

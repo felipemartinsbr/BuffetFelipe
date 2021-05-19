@@ -17,18 +17,34 @@
     <ItemGroup>
       <Content Remove="Views\Acesso\Supervisao.cshtml" />
       <Content Remove="Models\Buffet\Tipo\**" />
+      <Content Remove="ViewModels\Admin\**" />
+      <Content Remove="Controllers\Buffet\Cliente\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Compile Remove="Models\Buffet\Tipo\**" />
+      <Compile Remove="ViewModels\Admin\**" />
+      <Compile Remove="Migrations\20210517132546_NovasTabelas.cs" />
+      <Compile Remove="Migrations\20210517132546_NovasTabelas.Designer.cs" />
+      <Compile Remove="Migrations\DatabaseContextModelSnapshot.cs" />
+      <Compile Remove="Controllers\Buffet\Cliente\**" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="Models\Buffet\Tipo\**" />
+      <EmbeddedResource Remove="ViewModels\Admin\**" />
+      <EmbeddedResource Remove="Controllers\Buffet\Cliente\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Models\Buffet\Tipo\**" />
+      <None Remove="ViewModels\Admin\**" />
+      <None Remove="Controllers\Buffet\Cliente\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Views\Buffet\Evento" />
+      <Folder Include="Views\Buffet\Local" />
     </ItemGroup>
 
 </Project>
