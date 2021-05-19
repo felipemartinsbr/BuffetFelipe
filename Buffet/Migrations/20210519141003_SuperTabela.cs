@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Buffet.Migrations
 {
-    public partial class Identity : Migration
+    public partial class SuperTabela : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,16 +48,64 @@ namespace Buffet.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Clientes",
+                name: "Local",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Nome = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true)
+                    Descricao = table.Column<string>(nullable: true),
+                    Endereco = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clientes", x => x.Id);
+                    table.PrimaryKey("PK_Local", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SituacaoConvidado",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Descricao = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SituacaoConvidado", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SituacaoEvento",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Descricao = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SituacaoEvento", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TipoCliente",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Descricao = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TipoCliente", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TipoEvento",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Descricao = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TipoEvento", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -167,12 +215,48 @@ namespace Buffet.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Clientes",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Nome = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Endereco = table.Column<string>(nullable: true),
+                    Cpf = table.Column<string>(nullable: true),
+                    Cnpj = table.Column<string>(nullable: true),
+                    DataDeNascimento = table.Column<DateTime>(nullable: false),
+                    Observaçoes = table.Column<string>(nullable: true),
+                    EntradaCliente = table.Column<DateTime>(nullable: false),
+                    UltimaModificacaoCliente = table.Column<DateTime>(nullable: false),
+                    TipoClienteId = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clientes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Clientes_TipoCliente_TipoClienteId",
+                        column: x => x.TipoClienteId,
+                        principalTable: "TipoCliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Eventos",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Nome = table.Column<string>(nullable: true),
-                    ClienteId = table.Column<Guid>(nullable: true)
+                    Descricao = table.Column<string>(nullable: true),
+                    DataInicio = table.Column<DateTime>(nullable: false),
+                    DataFim = table.Column<DateTime>(nullable: false),
+                    ClienteId = table.Column<Guid>(nullable: true),
+                    TipoDeEventoId = table.Column<Guid>(nullable: true),
+                    SituacaoId = table.Column<Guid>(nullable: true),
+                    LocalId = table.Column<Guid>(nullable: true),
+                    Observacoes = table.Column<string>(nullable: true),
+                    DataEventoInserido = table.Column<DateTime>(nullable: false),
+                    DataEventoModificado = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -181,6 +265,56 @@ namespace Buffet.Migrations
                         name: "FK_Eventos_Clientes_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Eventos_Local_LocalId",
+                        column: x => x.LocalId,
+                        principalTable: "Local",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Eventos_SituacaoEvento_SituacaoId",
+                        column: x => x.SituacaoId,
+                        principalTable: "SituacaoEvento",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Eventos_TipoEvento_TipoDeEventoId",
+                        column: x => x.TipoDeEventoId,
+                        principalTable: "TipoEvento",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Convidados",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Nome = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Cpf = table.Column<string>(nullable: true),
+                    DataDeNascimento = table.Column<DateTime>(nullable: false),
+                    EventoId = table.Column<Guid>(nullable: true),
+                    TypeId = table.Column<Guid>(nullable: true),
+                    Observacoes = table.Column<string>(nullable: true),
+                    DataConvidadoInserido = table.Column<DateTime>(nullable: false),
+                    DataConvidadoModificado = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Convidados", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Convidados_Eventos_EventoId",
+                        column: x => x.EventoId,
+                        principalTable: "Eventos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Convidados_SituacaoConvidado_TypeId",
+                        column: x => x.TypeId,
+                        principalTable: "SituacaoConvidado",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -223,9 +357,39 @@ namespace Buffet.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Clientes_TipoClienteId",
+                table: "Clientes",
+                column: "TipoClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Convidados_EventoId",
+                table: "Convidados",
+                column: "EventoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Convidados_TypeId",
+                table: "Convidados",
+                column: "TypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Eventos_ClienteId",
                 table: "Eventos",
                 column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Eventos_LocalId",
+                table: "Eventos",
+                column: "LocalId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Eventos_SituacaoId",
+                table: "Eventos",
+                column: "SituacaoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Eventos_TipoDeEventoId",
+                table: "Eventos",
+                column: "TipoDeEventoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -246,7 +410,7 @@ namespace Buffet.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Eventos");
+                name: "Convidados");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -255,7 +419,25 @@ namespace Buffet.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "Eventos");
+
+            migrationBuilder.DropTable(
+                name: "SituacaoConvidado");
+
+            migrationBuilder.DropTable(
                 name: "Clientes");
+
+            migrationBuilder.DropTable(
+                name: "Local");
+
+            migrationBuilder.DropTable(
+                name: "SituacaoEvento");
+
+            migrationBuilder.DropTable(
+                name: "TipoEvento");
+
+            migrationBuilder.DropTable(
+                name: "TipoCliente");
         }
     }
 }

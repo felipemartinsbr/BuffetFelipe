@@ -7,5 +7,11 @@ namespace Buffet.Models.Buffet.Evento
         public Guid Id { get; set; }
         public string Descricao { get; set; }
         public string Endereco { get; set; }
+
+        public LocalEventoEntity()
+        {
+            Id = new Guid();
+        }
     }
+    
 }
