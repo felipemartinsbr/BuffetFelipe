@@ -19,6 +19,7 @@
       <Content Remove="Models\Buffet\Tipo\**" />
       <Content Remove="ViewModels\Admin\**" />
       <Content Remove="Controllers\Buffet\Cliente\**" />
+      <Content Remove="Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -28,18 +29,23 @@
       <Compile Remove="Migrations\20210517132546_NovasTabelas.Designer.cs" />
       <Compile Remove="Migrations\DatabaseContextModelSnapshot.cs" />
       <Compile Remove="Controllers\Buffet\Cliente\**" />
+      <Compile Remove="Migrations\20210519032455_TabelasAtualizadas.cs" />
+      <Compile Remove="Migrations\20210519032455_TabelasAtualizadas.Designer.cs" />
+      <Compile Remove="Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="Models\Buffet\Tipo\**" />
       <EmbeddedResource Remove="ViewModels\Admin\**" />
       <EmbeddedResource Remove="Controllers\Buffet\Cliente\**" />
+      <EmbeddedResource Remove="Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Models\Buffet\Tipo\**" />
       <None Remove="ViewModels\Admin\**" />
       <None Remove="Controllers\Buffet\Cliente\**" />
+      <None Remove="Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>

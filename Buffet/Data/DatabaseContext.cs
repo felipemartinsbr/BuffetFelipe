@@ -15,11 +15,11 @@ namespace Buffet.Data
         public DbSet<ClienteEntity> Clientes { get; set; }
         public DbSet<EventoEntity> Eventos { get; set; }
         public DbSet<ConvidadoEntity> Convidados { get; set; }
-        public DbSet<SituacaoEventoEntity> SituacaoEvento { get; set; }
-        public DbSet<TipoEventoEntity> TipoEvento { get; set; }
-        public DbSet<SituacaoConvidadoEntity> SituacaoConvidado { get; set; }
-        public DbSet<TipoClienteEntity> TipoCliente { get; set; }
-        public DbSet<LocalEventoEntity> Local { get; set; }
+        //public DbSet<SituacaoEventoEntity> SituacaoEvento { get; set; }
+        //public DbSet<TipoEventoEntity> TipoEvento { get; set; }
+        //public DbSet<SituacaoConvidadoEntity> SituacaoConvidado { get; set; }
+        //public DbSet<TipoClienteEntity> TipoCliente { get; set; }
+        //public DbSet<LocalEventoEntity> Local { get; set; }
         
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
             :base(options)

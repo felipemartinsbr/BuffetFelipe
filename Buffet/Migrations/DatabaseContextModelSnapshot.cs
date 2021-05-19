@@ -205,7 +205,7 @@ namespace Buffet.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SituacaoConvidado");
+                    b.ToTable("SituacaoConvidadoEntity");
                 });
 
             modelBuilder.Entity("Buffet.Models.Buffet.Evento.EventoEntity", b =>
@@ -274,7 +274,7 @@ namespace Buffet.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Local");
+                    b.ToTable("LocalEventoEntity");
                 });
 
             modelBuilder.Entity("Buffet.Models.Buffet.Situações.SituacaoEventoEntity", b =>
@@ -288,7 +288,7 @@ namespace Buffet.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SituacaoEvento");
+                    b.ToTable("SituacaoEventoEntity");
                 });
 
             modelBuilder.Entity("Buffet.Models.Buffet.Tipo.TipoClienteEntity", b =>
@@ -302,7 +302,7 @@ namespace Buffet.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TipoCliente");
+                    b.ToTable("TipoClienteEntity");
                 });
 
             modelBuilder.Entity("Buffet.Models.Buffet.Tipo.TipoEventoEntity", b =>
@@ -316,7 +316,7 @@ namespace Buffet.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TipoEvento");
+                    b.ToTable("TipoEventoEntity");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -443,7 +443,7 @@ namespace Buffet.Migrations
                         .HasForeignKey("ClienteId");
 
                     b.HasOne("Buffet.Models.Buffet.Evento.LocalEventoEntity", "Local")
-                        .WithMany()
+                        .WithMany("Eventos")
                         .HasForeignKey("LocalId");
 
                     b.HasOne("Buffet.Models.Buffet.Situações.SituacaoEventoEntity", "Situacao")
