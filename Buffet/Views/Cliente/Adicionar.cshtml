@@ -1,7 +1,66 @@
 ﻿@using System.Collections.Specialized
 @using Microsoft.EntityFrameworkCore.Scaffolding.Metadata
 @{
-    ViewData["Title"] = "Listagem";
+    ViewData["Title"] = "Adicionar";
 }
 
 <h2>Adicionar Cliente</h2>
+<hr/>
+<a href="/">Voltar</a>
+<hr/>
+
+@if (@Model.FormMensagensErro != null) {
+    <ul>
+        @foreach (var msgErro in @Model.FormMensagensErro) {
+            <li>@msgErro</li>
+        }
+    </ul>
+}
+
+<form action="/Cliente/Adicionar" method="POST">
+    <div>
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" type="text">
+    </div>
+    
+    <div>
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email">
+    </div>
+    
+    <div>
+        <label for="endereco">Endereço</label>
+        <input id="endereco" name="endereco" type="text">
+    </div>    
+    
+    <div>
+        <label for="tipoCliente">Tipo de Cliente</label>
+        <select id="tipoCliente" name="tipoCliente" asp-items="Model.TipoCliente"></select>
+    </div>  
+    
+    <div>
+        <label for="cpf">CPF</label>
+        <input id="cpf" name="cpf" type="text">
+    </div>    
+    
+    <div>
+        <label for="cnpj">CNPJ</label>
+        <input id="cnpj" name="cnpj" type="text">
+    </div>
+    
+    <div>
+        <label for="dataNasc">Data de Nascimento</label>
+        <input id="dataNasc" name="dataNasc" type="date">
+    </div>     
+    
+    <div>
+        <label for="observacoes">Observações</label>
+        <input id="observacoes" name="observacoes" type="text">
+    </div>    
+    
+    <div>
+        <input name="confirmar" type="submit" value="Confirmar">
+    </div>
+      
+
+</form>

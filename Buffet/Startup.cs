@@ -55,7 +55,7 @@ namespace Buffet
             services.AddTransient<ClienteService>();
             services.AddTransient<EventoService>();
             services.AddTransient<ConvidadoService>();
-
+            services.AddTransient<TipoClienteService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

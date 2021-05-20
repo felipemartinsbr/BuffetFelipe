@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Buffet.Data;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Buffet.Models.Buffet.Cliente
@@ -9,74 +10,114 @@ namespace Buffet.Models.Buffet.Cliente
     public class ClienteService
     {
         private readonly DatabaseContext _databaseContext;
+        private readonly TipoClienteService _tipoClienteService;
 
-        public ClienteService(DatabaseContext databaseContext)
+        public ClienteService(
+            DatabaseContext databaseContext,
+            TipoClienteService tipoClienteService
+            )
         { 
             _databaseContext = databaseContext;
+            _tipoClienteService = tipoClienteService;
         }
- 
-        public void ObterClientes()
+
+        public ICollection<ClienteEntity> ObterTodos()
         {
-            // OBTER UM ÚNICO OBJETO
-            /*
-            var primeiroCliente = _databaseContext.Clientes.First();
-            var primeiroClienteOuNulo = _databaseContext.Clientes.FirstOrDefault();
-            var clienteEspecifico1 = _databaseContext
-                .Clientes.Single(c => c.Id.ToString()
-                    .Equals("08d8f887-cd09-421d-8ee1-a0f9f0d36e57") );
-            var clienteEspecifico2 = _databaseContext
-                .Clientes.Single(c => c.Nome.Contains("Jo") );
-            var clienteEspecifico3 = _databaseContext
-                .Clientes.Find("08d8f887-cd09-421d-8ee1-a0f9f0d36e57");
-            
-            if (clienteEspecifico != null) {
-                Console.WriteLine(clienteEspecifico.Id);
-                Console.Write(" :: " + clienteEspecifico.Nome);
-                Console.Write(" :: " + clienteEspecifico.Email);
-            }
-            */
-            
-            // OBTER MÚLTIPLOS OBJETOS
-            //var clientes = _databaseContext.Clientes.ToList();
-            /*
-            var clientes = _databaseContext.Clientes
-                .Where(
-                    c => c.Nome.StartsWith("Jo") &&
-                                    c.Nome.EndsWith("e")
-                ).ToList();
-            */
-            
-            // ORDENAÇÃO
-            /*
-            var clientes = _databaseContext.Clientes
-                .OrderBy(c => c.Nome).ToList();
-            */
-            /*
-            foreach (var cliente in clientes) {
-                Console.WriteLine("----");
-                Console.WriteLine(cliente.Id);
-                Console.Write(" :: " + cliente.Nome);
-                Console.Write(" :: " + cliente.Email);
-            }
-            */
-            
-            // ENTIDADES RELACIONADAS
-            var cliente = _databaseContext.Clientes
-                .Include(c => c.Eventos)
-                .ToList()
-                .Single(c => c.Id.ToString()
-                    .Equals("08d8f887-cd09-421d-8ee1-a0f9f0d36e57")
-                );
-
-            if (cliente != null) {
-                Console.WriteLine(cliente.Id);
-                Console.Write(" :: " + cliente.Nome);
-                Console.Write(" :: " + cliente.Email);
-                Console.Write(" :: " + cliente.Eventos.Count);
-            }
-
-            //return cliente;
-            //return _databaseContext.Clientes.ToList();
+            return _databaseContext.Clientes
+                .Include(c => c.TipoCliente)
+                .ToList();
         }
+
+        public ClienteEntity ObterPorId(Guid id)
+        {
+            try
+            {
+                return _databaseContext.Clientes
+                    .Include(c => c.TipoCliente)
+                    .First(c => c.Id == id);
+
+            }catch
+            {
+                throw new Exception("Cliente de ID #" + id + "não encontrado");
+            }
+        }
+        public ClienteEntity Adicionar(IDadosBasicosClienteModel dadosBasicos)
+        {
+            var novoCliente = ValidarDadosBasicos(dadosBasicos);
+            _databaseContext.Clientes.Add(novoCliente);
+            _databaseContext.SaveChanges();
+
+            return novoCliente;
+        }
+        
+        public ClienteEntity Editar(
+            Guid id,
+            IDadosBasicosClienteModel dadosBasicos
+            )
+        {
+            var clienteEntity = ObterPorId(id);
+            clienteEntity = ValidarDadosBasicos(dadosBasicos, clienteEntity);
+            _databaseContext.SaveChanges();
+
+            return clienteEntity;
+        }
+
+        public ClienteEntity Remover(Guid id)
+        {
+            var clienteEntity = ObterPorId(id);
+            _databaseContext.Clientes.Remove(clienteEntity);
+            _databaseContext.SaveChanges();
+
+            return clienteEntity;
+        }
+
+        private ClienteEntity ValidarDadosBasicos(
+            IDadosBasicosClienteModel dadosBasicos,
+            ClienteEntity entidadeExistente = null
+            )
+        {
+            //Istanciar ou utilizar entidade previamente instanciada
+            var entidade = entidadeExistente ?? new ClienteEntity();
+            
+            //Validar e Atribuir E-mail
+            if (dadosBasicos.Email == null)
+            {
+                throw new Exception("Digite um e-mail válido");
+            }
+
+            entidade.Email = dadosBasicos.Email;
+            
+            //Validar Endereço
+            if (dadosBasicos.Endereco == null)
+            {
+                throw new Exception("O endereço é obrigatório");
+            }
+            
+            // Validar e Atribuir Tipo de Cliente
+            if (dadosBasicos.TipoCliente == null)
+            {
+                throw new Exception("Escolha um tipo");
+            }
+
+            entidade.TipoCliente = _tipoClienteService.ObterPorId(Convert.ToInt32(dadosBasicos.TipoCliente));
+            
+            // Validar e Atribuir Observações
+            if (dadosBasicos.Observacoes == null)
+            {
+                throw new Exception("Campo observações é obrigatório");
+            }
+            
+            return entidade;
+        }
+        
+        public interface IDadosBasicosClienteModel
+        {
+            public string Email { get; set; }
+            public string Endereco { get; set; }
+            public string TipoCliente { get; set; }
+            public string Observacoes { get; set; }
+        }
+      
     }
+    
 }

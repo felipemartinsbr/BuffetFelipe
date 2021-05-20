@@ -1,7 +1,55 @@
 ﻿@using System.Collections.Specialized
+@using Buffet.ViewModels.Buffet.Cliente
 @using Microsoft.EntityFrameworkCore.Scaffolding.Metadata
+@model Buffet.ViewModels.Buffet.Cliente.IndexViewModel
 @{
     ViewData["Title"] = "Listagem";
 }
 
 <h2>Listagem de Clientes</h2>
+
+@if (@Model.MensagemSucesso != null)
+{
+    <p><em>@Model.MensagemSucesso</em></p>
+}
+
+@if (@Model.MensagemErro != null)
+{
+    <p><em>@Model.MensagemErro</em></p>
+}
+<a href="/Cliente/Adicionar">Adicionar</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Data de Nascimento</th>
+        <th>Observações</th>
+        <th>Tipo</th>
+        <th>Data de Entrada</th>
+        <th>Última Modificação</th>
+        
+    </tr>
+    </thead>
+<tbody>
+@foreach(Cliente cliente in @Model.Clientes) {
+    <tr>
+        <td>@cliente.Nome</td>
+        <td>@cliente.Email</td>
+        <td>@cliente.DataDeNascimento</td>
+        <td>@cliente.Observacoes</td>
+        <td>@cliente.TipoCliente</td>
+        <td>@cliente.DataEntrada</td>
+        <td>@cliente.UltimaModificacao</td>
+        <td>
+            <a href="/Cliente/Editar/@cliente.Id">Editar</a>
+            <a href="/Cliente/Remover/@cliente.Id">Remover</a>
+        </td>
+
+    </tr>
+}
+
+
+</tbody>
+</table>

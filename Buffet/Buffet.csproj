@@ -46,6 +46,7 @@
       <Folder Include="Migrations" />
       <Folder Include="Views\Buffet\Evento" />
       <Folder Include="Views\Buffet\Local" />
+      <Folder Include="Views\Evento\Local" />
     </ItemGroup>
 
 </Project>
